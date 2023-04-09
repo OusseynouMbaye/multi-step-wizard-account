@@ -1,12 +1,11 @@
+<template>
+  <div></div>
+  <Wizard />
+</template>
+
 <script setup lang="ts">
 import HelloWorld from "./components/HelloWorld.vue";
+import Wizard from "./components/Wizard.vue";
 </script>
-
-<template>
-  <div>
-    <h1 class="text-3xl font-bold underline">Hello world!</h1>
-  </div>
-  <HelloWorld msg="Vite + Vue" />
-</template>
 
 <style scoped></style>
