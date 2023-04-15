@@ -1,6 +1,6 @@
 import { mount } from "@vue/test-utils";
 import Helloworld from "../src/components/HelloWorld.vue";
-// import { expect, test } from "vitest";
+import { expect, test } from "vitest";
 
 test("mount component", async () => {
   expect(Helloworld).toBeTruthy();
