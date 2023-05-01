@@ -1,12 +1,12 @@
 <template>
-  <div class="card w-96 bg-base-100 shadow-xl flex items-center">
-    <div class="" v-if="step === 1">
+  <div class="card w-96 shadow-xl flex items-center bg-white text-center">
+    <div class="" v-if="store.step === 1">
       <WizardStep1 />
     </div>
-    <div v-if="step === 2">
+    <div v-if="store.step === 2">
       <WizardStep2 />
     </div>
-    <div v-if="step === 3">
+    <div v-if="store.step === 3">
       <WizardSummary />
     </div>
   </div>
@@ -18,5 +18,7 @@ import WizardStep1 from './WizardStep1.vue'
 import WizardStep2 from './WizardStep2.vue'
 import WizardSummary from './WizardSummary.vue'
 
-const step = ref<number>(1)
+import { useWizardStore } from '../stores/wizardStore.js'
+
+const store = useWizardStore()
 </script>
