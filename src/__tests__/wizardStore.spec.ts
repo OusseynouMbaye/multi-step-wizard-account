@@ -11,7 +11,7 @@ describe('wizardStore', () => {
   it('should have a step of 1', () => {
     const wizard = useWizardStore()
     expect(wizard.step).toBe(1)
-    wizard.nextStep()
+    wizard.nextStep({})
     expect(wizard.step).toBe(2)
   })
 
@@ -19,7 +19,7 @@ describe('wizardStore', () => {
   it('should have a prev of 1', () => {
     const wizard = useWizardStore()
     expect(wizard.step).toBe(1)
-    wizard.nextStep()
+    wizard.nextStep({})
     expect(wizard.step).toBe(2)
     wizard.prevStep()
   })

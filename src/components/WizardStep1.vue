@@ -39,28 +39,6 @@
         />
       </div>
 
-      <!-- <div class="form-control w-full max-w-xs">
-        <label class="label" for="email"> Email </label>
-        <input
-          type="email"
-          name="email"
-          id=""
-          placeholder="joe.doe@gmail.com "
-          class="input w-full max-w-xs"
-        />
-      </div>
-
-      <div class="form-control w-full max-w-xs">
-        <label class="label" for="password"> Password</label>
-        <input
-          type="password"
-          name="password"
-          id=""
-          placeholder="Type here"
-          class="input w-full max-w-xs"
-        />
-      </div> -->
-
       <button type="submit" class="btn btn-primary">NEXT</button>
     </form>
   </div>
@@ -84,7 +62,7 @@ const handleSubmit = (event: any) => {
   // firstName.value is the value of the input with name="firstName" in the form
   // lastName.value is the value of the input with name="lastName" in the form
   // birthday.value is the value of the input with name="birthday" in the form
-  // console.log(firstName.value, lastName.value, birthday.value)
+  console.log(firstName.value, lastName.value, birthday.value)
   store.nextStep({
     firstName: firstName.value,
     lastName: lastName.value,
