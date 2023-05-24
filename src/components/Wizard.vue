@@ -1,5 +1,7 @@
 <template>
-  <div class="card w-96 h-96 shadow-xl flex items-center bg-white text-center">
+  <div
+    class="card w-96 h-auto shadow-xl flex items-center bg-white text-center"
+  >
     <div class="" v-if="store.step === 1">
       <WizardStep1 />
     </div>

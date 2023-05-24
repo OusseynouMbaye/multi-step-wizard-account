@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h2 class="font-bold">Step 1</h2>
+    <h2 class="font-bold text-3xl">Step 1</h2>
     <form @submit.prevent="handleSubmit" class="flex flex-col gap-4">
       <div class="form-control w-full max-w-xs">
         <label for="firstName" class="label">
