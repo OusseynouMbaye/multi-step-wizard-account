@@ -2,8 +2,35 @@
   <div>
     <h2>Step 2</h2>
     <div>
-      <button class="btn btn-primary" @click="store.prevStep">PREVIOUS</button>
-      <button class="btn btn-primary" @click="store.nextStep">NEXT</button>
+      <form @submit.prevent="handleSubmit" class="flex flex-col gap-4">
+        <div class="form-control w-full max-w-xs">
+          <label class="label" for="email"> Email </label>
+          <input
+            type="email"
+            name="email"
+            id=""
+            placeholder="joe.doe@gmail.com "
+            class="input w-full max-w-xs"
+          />
+        </div>
+
+        <div class="form-control w-full max-w-xs">
+          <label class="label" for="password"> Password</label>
+          <input
+            type="password"
+            name="password"
+            id=""
+            placeholder="Type here"
+            class="input w-full max-w-xs"
+          />
+        </div>
+        <div class="flex gap-3 justify-between">
+          <button class="btn btn-primary" @click="store.prevStep">
+            PREVIOUS
+          </button>
+          <button type="submit" class="btn btn-primary">NEXT</button>
+        </div>
+      </form>
     </div>
   </div>
 </template>
@@ -12,4 +39,21 @@
 import { useWizardStore } from '../stores/wizardStore.js'
 
 const store = useWizardStore()
+
+/**
+ *
+ * @param event  the event object
+ * @returns void
+ * @description this function is called when the form is submitted
+ * it gets the values of the inputs and pass them to the store
+ */
+const handleSubmit = (event: any) => {
+  const { email, password } = event.target.elements
+
+  // console.log(firstName.value, lastName.value, birthday.value)
+  store.nextStep({
+    email: email.value,
+    password: password.value,
+  })
+}
 </script>

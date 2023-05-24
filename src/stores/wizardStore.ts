@@ -27,7 +27,7 @@ export const useWizardStore = defineStore('wizard-store', () => {
     const store = useWizardStore()
     store.$patch({
       accountInfo: {
-        ...store.accountInfo,
+        // ...store.accountInfo,
         ...formData,
       },
     }) // $patch is a pinia method to update the store

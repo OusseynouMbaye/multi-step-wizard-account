@@ -9,7 +9,7 @@
 </template>
 
 <script lang="ts" setup>
-import { useWizardStore } from '../stores/wizardStore.js'
+import { useWizardStore } from '../stores/wizardStore'
 
 const store = useWizardStore()
 </script>
