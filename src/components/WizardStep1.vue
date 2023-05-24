@@ -12,6 +12,7 @@
           id=""
           placeholder="Enter your first name"
           class="input w-full max-w-xs"
+          :value="store.accountInfo.firstName"
         />
       </div>
 
@@ -23,6 +24,7 @@
           id=""
           placeholder="Enter your last Name "
           class="input w-full max-w-xs"
+          :value="store.accountInfo.lastName"
         />
       </div>
       <div class="form-control w-full max-w-xs">
@@ -33,6 +35,7 @@
           id=""
           placeholder="Type here"
           class="input w-full max-w-xs"
+          :value="store.accountInfo.birthday"
         />
       </div>
 

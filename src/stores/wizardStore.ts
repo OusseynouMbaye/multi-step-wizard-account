@@ -9,7 +9,7 @@ export const useWizardStore = defineStore('wizard-store', () => {
     lastName: '',
     email: '',
     password: '',
-    // confirmPassword: '',
+    confirmPassword: '',
     birthday: '',
     // avatar: '',
     // avatarFile: '',

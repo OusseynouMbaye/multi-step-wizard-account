@@ -2,7 +2,7 @@
   <div>
     <h2>Step 2</h2>
     <div>
-      <form @submit.prevent="handleSubmit" class="flex flex-col gap-4">
+      <form @submit.prevent="confirmPassword" class="flex flex-col gap-4">
         <div class="form-control w-full max-w-xs">
           <label class="label" for="email"> Email </label>
           <input
@@ -11,6 +11,7 @@
             id=""
             placeholder="joe.doe@gmail.com "
             class="input w-full max-w-xs"
+            :value="store.accountInfo.email"
           />
         </div>
 
@@ -22,8 +23,22 @@
             id=""
             placeholder="Type here"
             class="input w-full max-w-xs"
+            :value="store.accountInfo.password"
           />
         </div>
+        <!-- confirmPassword -->
+        <div class="form-control w-full max-w-xs">
+          <label class="label" for="confirmPassword"> Confirm Password</label>
+          <input
+            type="password"
+            name="confirmPassword"
+            id=""
+            placeholder="Type here"
+            class="input w-full max-w-xs"
+            :value="store.accountInfo.confirmPassword"
+          />
+        </div>
+
         <div class="flex gap-3 justify-between">
           <button class="btn btn-primary" @click="store.prevStep">
             PREVIOUS
@@ -36,7 +51,7 @@
 </template>
 
 <script lang="ts" setup>
-import { useWizardStore } from '../stores/wizardStore.js'
+import { useWizardStore } from '../stores/wizardStore'
 
 const store = useWizardStore()
 
@@ -54,6 +69,19 @@ const handleSubmit = (event: any) => {
   store.nextStep({
     email: email.value,
     password: password.value,
+  })
+}
+
+const confirmPassword = (event: any) => {
+  const { email, password, confirmPassword } = event.target.elements
+  if (password.value !== confirmPassword.value) {
+    alert('passwords do not match')
+    return false
+  }
+  store.nextStep({
+    email: email.value,
+    password: password.value,
+    confirmPassword: confirmPassword.value,
   })
 }
 </script>
