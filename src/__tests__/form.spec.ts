@@ -40,4 +40,38 @@ describe('form ui test', () => {
     expect(wizard.accountInfo.lastName).toBe('Doe')
     expect(wizard.accountInfo.birthday).toBe('2021-01-01')
   })
+
+  // step 2 form test
+  it('test form submit works', () => {
+    expect(WizardStep2).toBeTruthy()
+    const wrapper = mount(WizardStep2, {
+      attachTo: document.body, // to make vee-validate work
+      props: { step: 2 },
+    })
+
+    const wizard = useWizardStore()
+    wizard.step = 2
+
+    // check if form exists
+    expect(wrapper.find('input[name="email"]').exists()).toBe(true)
+    expect(wrapper.find('input[name="password"]').exists()).toBe(true)
+    expect(wrapper.find('input[name="confirmPassword"]').exists()).toBe(true)
+
+    // fill out form
+    wrapper.find('input[name="email"]').setValue('johnDoe@gmail.com')
+    wrapper.find('input[name="password"]').setValue('123456')
+    wrapper.find('input[name="confirmPassword"]').setValue('123456')
+
+    // submit form
+    wrapper.find('button[type="submit"]').trigger('click')
+
+    // check if store is updated
+
+    expect(wizard.step).toBe(3)
+
+    // check if account is the same
+    expect(wizard.accountInfo.email).toBe('johnDoe@gmail.com')
+    expect(wizard.accountInfo.password).toBe('123456')
+    expect(wizard.accountInfo.confirmPassword).toBe('123456')
+  })
 })
