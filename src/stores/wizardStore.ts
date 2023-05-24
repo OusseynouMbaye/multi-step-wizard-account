@@ -14,7 +14,24 @@ export const useWizardStore = defineStore('wizard-store', () => {
     // avatar: '',
     // avatarFile: '',
   })
-  function nextStep() {
+
+  /**
+   *
+   * @param formData
+   * @returns void
+   * @description this function is used to update the store with the form data and increment the step value to move to
+   * the next step in the wizard
+   *
+   */
+  function nextStep(formData: any) {
+    const store = useWizardStore()
+    store.$patch({
+      accountInfo: {
+        ...store.accountInfo,
+        ...formData,
+      },
+    }) // $patch is a pinia method to update the store
+    // console.log(formData)
     step.value++
   }
 
