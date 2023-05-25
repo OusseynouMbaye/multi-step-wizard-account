@@ -1,6 +1,7 @@
 <template>
   <div>
     <h2 class="font-bold text-3xl">Step 1</h2>
+    <!--    -->
     <form @submit.prevent="handleSubmit" class="flex flex-col gap-4">
       <div class="form-control w-full max-w-xs">
         <label for="firstName" class="label">
@@ -9,7 +10,6 @@
         <input
           type="text"
           name="firstName"
-          id=""
           placeholder="Enter your first name"
           class="input w-full max-w-xs"
           :value="store.accountInfo.firstName"
@@ -21,7 +21,6 @@
         <input
           type="text"
           name="lastName"
-          id=""
           placeholder="Enter your last Name "
           class="input w-full max-w-xs"
           :value="store.accountInfo.lastName"
@@ -32,13 +31,19 @@
         <input
           type="date"
           name="birthday"
-          id=""
           placeholder="Type here"
           class="input w-full max-w-xs"
           :value="store.accountInfo.birthday"
         />
       </div>
-
+      <!-- <VueDatePicker
+        v-model="date"
+        :format="format"
+        name="birthday"
+        placeholder="Type here"
+        class="w-full max-w-xs"
+        :value="store.accountInfo.birthday"
+      /> -->
       <button type="submit" class="btn btn-primary">NEXT</button>
     </form>
   </div>
@@ -46,6 +51,10 @@
 
 <script lang="ts" setup>
 import { useWizardStore } from '../stores/wizardStore.js'
+
+// import VueDatePicker from '@vuepic/vue-datepicker'
+// import '@vuepic/vue-datepicker/dist/main.css'
+// import { ref } from 'vue'
 
 const store = useWizardStore()
 
@@ -69,4 +78,21 @@ const handleSubmit = (event: any) => {
     birthday: birthday.value,
   }) // pass the values to the store
 }
+
+// const date = ref(new Date())
+// /**
+//  *
+//  * @param date the date object
+//  * @returns string
+//  * @description this function is used to format the date object to a string in the format dd/mm/yyyy
+//  *
+//  */
+// const format: any = (date: any) => {
+//   if (!date) return null
+//   const day = date.getDate()
+//   const month = date.getMonth() + 1
+//   const year = date.getFullYear()
+
+//   return `${day}/${month}/${year}`
+// }
 </script>

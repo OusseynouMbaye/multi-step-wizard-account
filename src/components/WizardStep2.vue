@@ -8,7 +8,6 @@
           <input
             type="email"
             name="email"
-            id=""
             placeholder="joe.doe@gmail.com "
             class="input w-full max-w-xs"
             :value="store.accountInfo.email"
@@ -20,7 +19,6 @@
           <input
             type="password"
             name="password"
-            id=""
             placeholder="Type here"
             class="input w-full max-w-xs"
             :value="store.accountInfo.password"
@@ -32,7 +30,6 @@
           <input
             type="password"
             name="confirmPassword"
-            id=""
             placeholder="Type here"
             class="input w-full max-w-xs"
             :value="store.accountInfo.confirmPassword"
