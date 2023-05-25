@@ -52,23 +52,32 @@ import { useWizardStore } from '../stores/wizardStore'
 
 const store = useWizardStore()
 
+// /**
+//  *
+//  * @param event  the event object
+//  * @returns void
+//  * @description this function is called when the form is submitted
+//  * it gets the values of the inputs and pass them to the store
+//  */
+// const handleSubmit = (event: any) => {
+//   const { email, password } = event.target.elements
+
+//   // console.log(firstName.value, lastName.value, birthday.value)
+//   store.nextStep({
+//     email: email.value,
+//     password: password.value,
+//   })
+// }
+
 /**
+ * @description This function is called when the user clicks the NEXT button on the form.
+ * It will validate the password and confirmPassword fields to make sure they match. If they do not
+ *  match, it will alert the user and return false. If they do match, it will call the nextStep
+ * method on the store and pass in the email, password, and confirmPassword values from the form.
+ * @param {any} event
+ * @returns {boolean}
  *
- * @param event  the event object
- * @returns void
- * @description this function is called when the form is submitted
- * it gets the values of the inputs and pass them to the store
  */
-const handleSubmit = (event: any) => {
-  const { email, password } = event.target.elements
-
-  // console.log(firstName.value, lastName.value, birthday.value)
-  store.nextStep({
-    email: email.value,
-    password: password.value,
-  })
-}
-
 const confirmPassword = (event: any) => {
   const { email, password, confirmPassword } = event.target.elements
   if (password.value !== confirmPassword.value) {
