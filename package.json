@@ -11,6 +11,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@supabase/supabase-js": "^2.23.0",
     "@vuepic/vue-datepicker": "^5.1.2",
     "daisyui": "^2.51.5",
     "jsdom": "^21.1.1",

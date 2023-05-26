@@ -30,6 +30,7 @@
 
         <div class="flex gap-3 justify-between">
           <button class="btn btn-primary" @click="doLogin">Login</button>
+          <button class="btn btn-primary" @click="doSignUp">Sign Up</button>
         </div>
       </form>
     </div>
@@ -40,6 +41,7 @@
 import { reactive } from 'vue'
 import { useAuthStore } from '../stores/authStore'
 import { useWizardStore } from '../stores/wizardStore'
+import router from '../router/index'
 
 const store = useWizardStore()
 const authStore = useAuthStore()
@@ -66,6 +68,16 @@ const doLogin = async (event: any) => {
   } catch (error: any) {
     alert('Login failed' + error.message)
   }
+}
+
+/**
+ *
+ * @returns void
+ * @description this function is called when the create account button is clicked
+ */
+const doSignUp = () => {
+  // path to the create account page
+  router.push('/create-account')
 }
 
 const handleSubmit = (event: any) => {
