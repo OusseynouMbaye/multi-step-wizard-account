@@ -2,10 +2,7 @@
   <div class="flex flex-col items-center">
     <h2>Login Page</h2>
     <div class="card w-96 bg-white shadow-xl">
-      <form
-        @submit.prevent="handleSubmit"
-        class="flex flex-col items-center gap-10"
-      >
+      <form @submit.prevent="doLogin" class="flex flex-col items-center gap-10">
         <div class="form-control w-full max-w-xs">
           <label class="label" for="email"> Email </label>
           <input
@@ -13,7 +10,6 @@
             name="email"
             placeholder="joe.doe@gmail.com "
             class="input w-full max-w-xs"
-            :value="credentials.email"
           />
         </div>
 
@@ -24,12 +20,11 @@
             name="password"
             placeholder="Type here"
             class="input w-full max-w-xs"
-            :value="credentials.password"
           />
         </div>
 
         <div class="flex gap-3 justify-between">
-          <button class="btn btn-primary" @click="doLogin">Login</button>
+          <button class="btn btn-primary" type="submit">Login</button>
           <button class="btn btn-primary" @click="doSignUp">Sign Up</button>
         </div>
       </form>
@@ -38,18 +33,14 @@
 </template>
 
 <script lang="ts" setup>
-import { reactive } from 'vue'
 import { useAuthStore } from '../stores/authStore'
-import { useWizardStore } from '../stores/wizardStore'
 import router from '../router/index'
+import { useWizardStore } from '../stores/wizardStore'
+// import { useRouter } from 'vue-router'
 
-const store = useWizardStore()
+// const router = useRouter()
 const authStore = useAuthStore()
-const credentials = reactive({
-  email: '',
-  password: '',
-})
-
+const store = useWizardStore()
 /**
  *
  * @param event the event object
@@ -61,12 +52,17 @@ const doLogin = async (event: any) => {
     const { email, password } = event.target.elements
 
     console.log(email.value, password.value)
-    await authStore.login({
-      email,
-      password,
+    const { data, error } = await authStore.login({
+      email: email.value,
+      password: password.value,
     }) // pass the values to the store
+
+    if (error) throw error
+    console.log(data.user?.email)
+
+    router.replace('/')
   } catch (error: any) {
-    alert('Login failed' + error.message)
+    alert('Login failed : ' + error.message)
   }
 }
 

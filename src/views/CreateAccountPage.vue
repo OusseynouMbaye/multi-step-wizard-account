@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="flex flex-col items-center">
     <h2>Account Page</h2>
     <Wizard />
   </div>
